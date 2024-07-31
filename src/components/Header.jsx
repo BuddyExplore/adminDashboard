@@ -43,6 +43,10 @@ const Header = () => {
         return "System Managers";
       case "/feedbacks":
         return "Feedbacks";
+        case "/messages":
+        return "Messages";
+        case "/notifications":
+        return "Notifications";
       default:
         return "Admin Dashboard";
     }
@@ -76,18 +80,7 @@ const Header = () => {
       <h2 className="text-black-800 font-bold text-xl">{getPageName(path)}</h2>
 
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <div
-          className="searchBox flex items-center bg-gray-100 rounded-full p-2 shadow-sm w-[300px]"
-          style={{ backgroundColor: "white", marginRight: "20px" }}
-        >
-          <IoSearch className="text-gray-500 ml-3" />
-          <input
-            type="text"
-            className="w-full h-full pl-10 pr-4 py-2 outline-none rounded-full bg-gray-200 focus:bg-gray transition duration-200 font-sans"
-            placeholder="Search here..."
-          />
-        </div>
-
+  
         <Tooltip title="Notifications">
           <IconButton
             onClick={handleNotificationsMenuOpen}

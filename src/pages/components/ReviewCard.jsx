@@ -20,12 +20,12 @@ const ReviewCard = () => {
     <div className="card border-1 bg-white p-4 rounded-lg shadow-md flex flex-row items-center space-x-4">
       <Box display="flex" alignItems="center">
         <Star fontSize="large" className="text-black-500" />
-        <Typography variant="h4" className="font-bold ml-2">
+      <Typography variant="h4" className="font-bold ml-2">
           {averageRating.toFixed(2)}
-        </Typography>
-        <Typography variant="body1" className="ml-10  0 text-gray-500">
+        </Typography> 
+         {/*<Typography variant="body1" className="ml-10  0 text-gray-500">
           &mdash; of {totalReviews} reviews
-        </Typography>
+        </Typography>*/} 
       </Box>
 
       <div className="flex flex-col space-y-1 w-full p-2">

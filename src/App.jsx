@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import SystemManagers from "./pages/SystemManagers";
 import Feedbacks from "./pages/Feedbacks";
+import Notifications from "./pages/Notifications";
+import Messages from "./pages/Messages";
 
 const MyContext = createContext();
 
@@ -26,6 +28,8 @@ function App() {
               <Route path="/dashboard" exact={true} element={<Dashboard />} />
               <Route path="/systemManagers" exact={true} element={<SystemManagers />} />
               <Route path="/feedbacks" exact={true} element={<Feedbacks/>} />
+              <Route path="/notifications" exact={true} element={<Notifications/>} />
+              <Route path="/messages" exact={true} element={<Messages/>} />
               </Routes>
           </div>
         </section>

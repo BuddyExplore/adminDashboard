@@ -24,11 +24,11 @@ const Dashboard = () => {
   const [state, setState] = useState({
     series: [
       {
-        name: "Previous Month",
+        name: "Positive",
         data: [31, 40, 28, 51, 42, 109, 100],
       },
       {
-        name: "Last 12 days",
+        name: "Negative",
         data: [11, 32, 45, 32, 34, 52, 41],
       },
     ],
@@ -47,13 +47,13 @@ const Dashboard = () => {
       xaxis: {
         type: "datetime",
         categories: [
-          "2018-09",
-          "2018-10",
-          "2018-11",
-          "2018-12",
-          "2019-01",
-          "2019-02",
-          "2019-03",
+          "2024-01",
+          "2024-02",
+          "2024-03",
+          "2024-04",
+          "2024-05",
+          "2024-06",
+          "2024-07",
         ],
       },
       tooltip: {
@@ -373,7 +373,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div
+     {/*  <div
         className="card mt-10 border-1 bg-white"
         style={{
           borderRadius: "10px",
@@ -399,7 +399,7 @@ const Dashboard = () => {
             }}
           ></div>
         </div>
-      </div>
+      </div>*/}
 
       <div
         style={{

@@ -42,7 +42,14 @@ const rows = [
     "072-7799378",
     ""
   ),
-  createData(3, "Sanduni", "Perera", "sm.sanduni.perera@gmail.com", "078-3475228",""),
+  createData(
+    3,
+    "Sanduni",
+    "Perera",
+    "sm.sanduni.perera@gmail.com",
+    "078-3475228",
+    ""
+  ),
   createData(
     4,
     "Mohan",
@@ -153,40 +160,18 @@ const SystemManagers = () => {
   return (
     <>
       <Box sx={{ alignItems: "right", textAlign: "right" }}>
-        <div className="d-flex justify-content-end align-items-center mt-24 mb-1 ">
-          <FormControl
-            variant="outlined"
-            style={{
-              minWidth: 150,
-              minHeight: 50,
-              marginRight: "20px",
-              borderRadius: "100px",
-            }}
-          >
-            <InputLabel>Filter By Status</InputLabel>
-            <Select
-              value={filterByStatus}
-              onChange={handleStatusFilterChange}
-              label="Filter By Status"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {uniqueStatuses.map((status) => (
-                <MenuItem key={status} value={status}>
-                  {status}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
+        <div className="d-flex justify-content-end align-items-center mt-24 mb-1">
           <Button
             style={{
               backgroundColor: "#0078A1",
               color: "white",
-              borderShadow: "none",
-              minHeight: 55,
-              minWidth: 100,
+              boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.16)",
+              borderRadius: "10px",
+              maxHeight: 40,
+              minWidth: 120,
+              padding: "10px 20px",
+              fontSize: "16px",
+              textTransform: "none",
             }}
             onClick={handleAddUser}
           >
@@ -210,7 +195,9 @@ const SystemManagers = () => {
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
-                  <TableCell sx={{ fontWeight: "bold" }}>System Manager</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>
+                    System Manager
+                  </TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Mobile No</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}></TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}></TableCell>
@@ -242,37 +229,48 @@ const SystemManagers = () => {
                         </div>
                       </TableCell>
                       <TableCell>{row.mobile}</TableCell>
-                 
-                      <TableCell>
+                      <TableCell style={{ marginLeft: "auto" }}>
                         <Button
-                          variant="contained"
-                          color="inherit"
-                          size="small"
-                          style={{ borderRadius: "10px", marginRight: "10px" }}
+                          style={{
+                            color: "green",
+                            backgroundColor: "#d4edda",
+                            borderRadius: "4px",
+                            padding: "2px 8px",
+                            marginRight: "10px",
+                          }}
                         >
                           View
                         </Button>
                         <Button
-                          variant="contained"
-                          color="inherit"
-                          size="small"
-                          style={{ borderRadius: "10px", marginRight: "10px" }}
+                          style={{
+                            color: "#0078A1",
+                            backgroundColor: "rgb(0, 120, 161,0.2)",
+                            borderRadius: "4px",
+                            padding: "2px 8px",
+                            marginRight: "10px",
+                          }}
                         >
                           update
                         </Button>
                         <Button
-                          variant="contained"
-                          color="inherit"
-                          size="small"
-                          style={{ borderRadius: "10px", marginRight: "10px" }}
+                          style={{
+                            color: "orange",
+                            backgroundColor: "#fff3cd",
+                            borderRadius: "4px",
+                            padding: "2px 8px",
+                            marginRight: "10px",
+                          }}
                         >
                           disable
                         </Button>
                         <Button
-                          variant="contained"
-                          color="inherit"
-                          size="small"
-                          style={{ borderRadius: "10px", marginRight: "10px" }}
+                          style={{
+                            color: "red",
+                            backgroundColor: "#f8d7da",
+                            borderRadius: "4px",
+                            padding: "2px 8px",
+                            marginRight: "10px",
+                          }}
                         >
                           delete
                         </Button>
@@ -315,7 +313,7 @@ const SystemManagers = () => {
 
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Box sx={styles.modal}>
-          <h2>Add New User</h2>
+          <h2>Add System Manager</h2>
           <TextField
             label="First Name"
             name="firstName"
@@ -364,7 +362,7 @@ const SystemManagers = () => {
             onClick={handleSaveUser}
             fullWidth
           >
-            Save User
+            Save 
           </Button>
         </Box>
       </Modal>
