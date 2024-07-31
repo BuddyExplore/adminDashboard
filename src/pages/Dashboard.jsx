@@ -333,7 +333,7 @@ const Dashboard = () => {
             position: "relative",
           }}
         >
-          <h2 className="mb-4 font-bold text-sm">Revenue</h2>
+          <h2 className="mb-4 font-bold text-sm">Feedbacks</h2>
           <div>
             <div id="chart">
               <ReactApexChart

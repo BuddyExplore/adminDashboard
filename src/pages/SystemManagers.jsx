@@ -30,7 +30,7 @@ const rows = [
     1,
     "Shehan",
     "Fernando",
-    "shehan.fernando@gmail.com",
+    "sm.shehan.fernando@gmail.com",
     "077-4173123",
     ""
   ),
@@ -38,16 +38,16 @@ const rows = [
     2,
     "Ayash",
     "Siriwardhana",
-    "ayashsiri12@gmail.com",
+    "sm.ayash.siriwardhana@gmail.com",
     "072-7799378",
     ""
   ),
-  createData(3, "Sanduni", "Perera", "sanduni.2000@gmail.com", "078-3475228",""),
+  createData(3, "Sanduni", "Perera", "sm.sanduni.perera@gmail.com", "078-3475228",""),
   createData(
     4,
     "Mohan",
     "Fernando",
-    "mohanfernando00@gmail.com",
+    "sm.mohan.fernando@gmail.com",
     "077-2351415",
     ""
   ),
@@ -112,7 +112,7 @@ const SystemManagers = () => {
     setNewUser({
       firstName: "Amali",
       lastName: "Perera",
-      email: "amali2000@gmail.com",
+      email: "sm.amali.perera@gmail.com",
       mobile: "077-1234567",
       password: "password",
     });
@@ -209,8 +209,8 @@ const SystemManagers = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ fontWeight: "bold" }}>User ID</TableCell>
-                  <TableCell sx={{ fontWeight: "bold" }}>User</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>System Manager</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Mobile No</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}></TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}></TableCell>
@@ -242,9 +242,7 @@ const SystemManagers = () => {
                         </div>
                       </TableCell>
                       <TableCell>{row.mobile}</TableCell>
-                      <TableCell style={{ color: getStatusColor(row.status) }}>
-                        {row.status}
-                      </TableCell>
+                 
                       <TableCell>
                         <Button
                           variant="contained"
@@ -359,36 +357,7 @@ const SystemManagers = () => {
             fullWidth
             margin="normal"
           />
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Role</InputLabel>
-            <Select
-              name="role"
-              value={newUser.role}
-              onChange={handleInputChange}
-              label="Role"
-            >
-              {uniqueRoles.map((role) => (
-                <MenuItem key={role} value={role}>
-                  {role}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Status</InputLabel>
-            <Select
-              name="status"
-              value={newUser.status}
-              onChange={handleInputChange}
-              label="Status"
-            >
-              {uniqueStatuses.map((status) => (
-                <MenuItem key={status} value={status}>
-                  {status}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+
           <Button
             variant="contained"
             color="primary"

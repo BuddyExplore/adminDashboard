@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import SystemManagers from "./pages/SystemManagers";
-import Revenue from "./pages/Revenue";
+import Feedbacks from "./pages/Feedbacks";
 
 const MyContext = createContext();
 
@@ -25,7 +25,7 @@ function App() {
               <Route path="/" exact={true} element={<Dashboard />} />
               <Route path="/dashboard" exact={true} element={<Dashboard />} />
               <Route path="/systemManagers" exact={true} element={<SystemManagers />} />
-              <Route path="/revenue" exact={true} element={<Revenue/>} />
+              <Route path="/feedbacks" exact={true} element={<Feedbacks/>} />
               </Routes>
           </div>
         </section>

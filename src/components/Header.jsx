@@ -41,8 +41,8 @@ const Header = () => {
         return "Dashboard";
       case "/systemManagers":
         return "System Managers";
-      case "/revenue":
-        return "Revenue";
+      case "/feedbacks":
+        return "Feedbacks";
       default:
         return "Admin Dashboard";
     }

@@ -4,15 +4,9 @@ import Logo from "../assets/images/logo.png";
 import Button from "@mui/material/Button";
 import {
   MdOutlineDashboard,
-  MdOutlineMessage,
-  MdOutlineSettings,
-  MdOutlineTravelExplore,
-  MdCardTravel,
 } from "react-icons/md";
-import { FaAngleRight, FaCarCrash } from "react-icons/fa";
-import { IoDocumentAttachOutline, IoAnalyticsOutline } from "react-icons/io5";
-import { GrTransaction, GrDocumentMissing } from "react-icons/gr";
 import { HiOutlineUserGroup } from "react-icons/hi2";
+import { VscFeedback } from "react-icons/vsc";
 
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -84,18 +78,18 @@ const Sidebar = () => {
             </Button>
           </li>
 
-          {/*revenue*/}
+          {/*feedbacks*/}
           <li>
             <Button
               className={`w-full flex items-center ${
                 activeTab === 2 ? "active" : ""
               }`}
-              onClick={() => handleButtonClick(2, "/revenue")}
+              onClick={() => handleButtonClick(2, "/feedbacks")}
             >
               <span className="icon w-[30px] h-[30px] flex items-center justify-center rounded-md">
-                <MdCardTravel />
+                <VscFeedback />
               </span>
-              Revenue
+              Feedbacks
             </Button>
           </li>
 
