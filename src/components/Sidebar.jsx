@@ -89,7 +89,7 @@ const Sidebar = () => {
               <span className="icon w-[30px] h-[30px] flex items-center justify-center rounded-md">
                 <VscFeedback />
               </span>
-              Feedbacks
+              System Feedbacks
             </Button>
           </li>
 

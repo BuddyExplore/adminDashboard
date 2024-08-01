@@ -42,10 +42,10 @@ const Header = () => {
       case "/systemManagers":
         return "System Managers";
       case "/feedbacks":
-        return "Feedbacks";
-        case "/messages":
+        return "System Feedbacks";
+      case "/messages":
         return "Messages";
-        case "/notifications":
+      case "/notifications":
         return "Notifications";
       default:
         return "Admin Dashboard";
@@ -80,7 +80,6 @@ const Header = () => {
       <h2 className="text-black-800 font-bold text-xl">{getPageName(path)}</h2>
 
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-  
         <Tooltip title="Notifications">
           <IconButton
             onClick={handleNotificationsMenuOpen}
@@ -113,10 +112,10 @@ const Header = () => {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem>
-            <Typography variant="body2">Notification 1</Typography>
+            <Typography variant="body2">New message received</Typography>
           </MenuItem>
           <MenuItem>
-            <Typography variant="body2">Notification 2</Typography>
+            <Typography variant="body2">Password reset requested</Typography>
           </MenuItem>
           <Divider />
           <MenuItem onClick={() => handleSeeAll("/notifications")}>
@@ -156,10 +155,10 @@ const Header = () => {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem>
-            <Typography variant="body2">Message 1</Typography>
+            <Typography variant="body2">Inquiry about tour</Typography>
           </MenuItem>
           <MenuItem>
-            <Typography variant="body2">Message 2</Typography>
+            <Typography variant="body2">Booking confirmation</Typography>
           </MenuItem>
           <Divider />
           <MenuItem onClick={() => handleSeeAll("/messages")}>

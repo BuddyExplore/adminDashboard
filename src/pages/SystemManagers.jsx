@@ -1,68 +1,39 @@
-import { useEffect, useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import IconButton from "@mui/material/IconButton";
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Modal,
+  Pagination,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
+} from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Button from "@mui/material/Button";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/system";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Modal from "@mui/material/Modal";
 
-/* Table data */
-function createData(id, firstName, lastName, email, mobile) {
-  return { id, firstName, lastName, email, mobile };
-}
+const createData = (id, firstName, lastName, email, mobile, role, status) => {
+  return { id, firstName, lastName, email, mobile, role, status };
+};
 
 const rows = [
-  createData(
-    1,
-    "Shehan",
-    "Fernando",
-    "sm.shehan.fernando@gmail.com",
-    "077-4173123",
-    ""
-  ),
-  createData(
-    2,
-    "Ayash",
-    "Siriwardhana",
-    "sm.ayash.siriwardhana@gmail.com",
-    "072-7799378",
-    ""
-  ),
-  createData(
-    3,
-    "Sanduni",
-    "Perera",
-    "sm.sanduni.perera@gmail.com",
-    "078-3475228",
-    ""
-  ),
-  createData(
-    4,
-    "Mohan",
-    "Fernando",
-    "sm.mohan.fernando@gmail.com",
-    "077-2351415",
-    ""
-  ),
+  createData(1, "Amali", "Perera", "sm.amali.perera@gmail.com", "077-1234567", "Manager", "Approved"),
+  createData(2, "Nimal", "Silva", "sm.nimal.silva@gmail.com", "071-2345678", "Manager", "Pending"),
+  createData(3, "Kamal", "Fernando", "sm.kamal.fernando@gmail.com", "072-3456789", "Manager", "Rejected"),
+  createData(4, "Sunil", "Wijesinghe", "sm.sunil.wijesinghe@gmail.com", "075-4567890", "Manager", "Approved"),
 ];
 
-const CustomIconButton = styled(IconButton)({
-  boxShadow: "none",
-});
+const inactiveRows = [
+  createData(5, "Kavindu", "Weerasinghe", "sm.kavindu.weerasinghe@gmail.com", "077-7654321", "Manager", ""),
+  createData(6, "Nadeesha", "Gunarathne", "sm.nadeesha.gunarathne@gmail.com", "071-1239874", "Manager", ""),
+];
 
 const SystemManagers = () => {
   useEffect(() => {
@@ -70,6 +41,7 @@ const SystemManagers = () => {
   }, []);
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl2, setAnchorEl2] = useState(null); // For the second table
   const [filterByRole, setFilterByRole] = useState("");
   const [filterByStatus, setFilterByStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -89,6 +61,14 @@ const SystemManagers = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+
+  const handleClose2 = () => {
+    setAnchorEl2(null);
   };
 
   const handleRoleFilterChange = (event) => {
@@ -117,11 +97,11 @@ const SystemManagers = () => {
 
   const handleAddUser = () => {
     setNewUser({
-      firstName: "Amali",
-      lastName: "Perera",
-      email: "sm.amali.perera@gmail.com",
-      mobile: "077-1234567",
-      password: "password",
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      password: "",
     });
     setIsModalOpen(true);
   };
@@ -145,6 +125,13 @@ const SystemManagers = () => {
   };
 
   const filteredRows = rows.filter((row) => {
+    return (
+      (!filterByRole || row.role === filterByRole) &&
+      (!filterByStatus || row.status === filterByStatus)
+    );
+  });
+
+  const filteredInactiveRows = inactiveRows.filter((row) => {
     return (
       (!filterByRole || row.role === filterByRole) &&
       (!filterByStatus || row.status === filterByStatus)
@@ -196,7 +183,7 @@ const SystemManagers = () => {
                 <TableRow>
                   <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>
-                    System Manager
+                    Active System Manager
                   </TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Mobile No</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}></TableCell>
@@ -229,7 +216,7 @@ const SystemManagers = () => {
                         </div>
                       </TableCell>
                       <TableCell>{row.mobile}</TableCell>
-                      <TableCell style={{ marginLeft: "auto" }}>
+                      <TableCell>
                         <Button
                           style={{
                             color: "green",
@@ -241,39 +228,37 @@ const SystemManagers = () => {
                         >
                           View
                         </Button>
+
                         <Button
                           style={{
                             color: "#0078A1",
-                            backgroundColor: "rgb(0, 120, 161,0.2)",
+                            backgroundColor: "rgb(0, 120, 161,0.2)", 
                             borderRadius: "4px",
                             padding: "2px 8px",
-                            marginRight: "10px",
                           }}
                         >
-                          update
+                          Update
                         </Button>
-                        <Button
-                          style={{
-                            color: "orange",
-                            backgroundColor: "#fff3cd",
-                            borderRadius: "4px",
-                            padding: "2px 8px",
-                            marginRight: "10px",
-                          }}
+                      </TableCell>
+                      <TableCell style={{ marginLeft: "auto" }}>
+                        <IconButton
+                          aria-label="more"
+                          aria-controls="long-menu"
+                          aria-haspopup="true"
+                          onClick={handleClick}
                         >
-                          disable
-                        </Button>
-                        <Button
-                          style={{
-                            color: "red",
-                            backgroundColor: "#f8d7da",
-                            borderRadius: "4px",
-                            padding: "2px 8px",
-                            marginRight: "10px",
-                          }}
+                          <MoreVertIcon />
+                        </IconButton>
+                        <Menu
+                          id="long-menu"
+                          anchorEl={anchorEl}
+                          keepMounted
+                          open={Boolean(anchorEl)}
+                          onClose={handleClose}
                         >
-                          delete
-                        </Button>
+                          <MenuItem onClick={handleClose}>Disable</MenuItem>
+                          <MenuItem onClick={handleClose}>Delete</MenuItem>
+                        </Menu>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -311,64 +296,163 @@ const SystemManagers = () => {
         </span>
       </Box>
 
-      <Modal open={isModalOpen} onClose={handleCloseModal}>
-        <Box sx={styles.modal}>
-          <h2>Add System Manager</h2>
-          <TextField
-            label="First Name"
-            name="firstName"
-            value={newUser.firstName}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Last Name"
-            name="lastName"
-            value={newUser.lastName}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Email"
-            name="email"
-            value={newUser.email}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Mobile"
-            name="mobile"
-            value={newUser.mobile}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Password"
-            name="password"
-            type="password"
-            value={newUser.password}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
+      {/* Second table for Inactive System Managers */}
+      <div
+        className="card border-2 bg-white"
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: "10px",
+          padding: "15px",
+          marginTop: "30px",
+        }}
+      >
+        <div className="table-responsive py-3 px-5">
+          <TableContainer>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>
+                    Inactive System Manager
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Mobile No</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}></TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}></TableCell>
+                </TableRow>
+              </TableHead>
 
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSaveUser}
-            fullWidth
-          >
-            Save 
-          </Button>
+              <TableBody>
+                {filteredRows
+                  .slice(
+                    (currentPage - 1) * rowsPerPage,
+                    currentPage * rowsPerPage
+                  )
+                  .map((row) => (
+                    <TableRow
+                      key={row.id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.id}
+                      </TableCell>
+                      <TableCell>
+                        <div style={styles.userContainer}>
+                          <div style={styles.userInfo}>
+                            <div>
+                              {row.firstName} {row.lastName}
+                            </div>
+                            <div style={styles.userEmail}>{row.email}</div>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>{row.mobile}</TableCell>
+                      <TableCell style={{ marginLeft: "auto" }}>
+                        <IconButton
+                          aria-label="more"
+                          aria-controls="long-menu"
+                          aria-haspopup="true"
+                          onClick={handleClick2}
+                        >
+                          <MoreVertIcon />
+                        </IconButton>
+                        <Menu
+                          id="long-menu"
+                          anchorEl={anchorEl2}
+                          keepMounted
+                          open={Boolean(anchorEl2)}
+                          onClose={handleClose2}
+                        >
+                          <MenuItem onClick={handleClose2}>
+                            Make Active
+                          </MenuItem>
+                        </Menu>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+
+      <Modal open={isModalOpen} onClose={handleCloseModal}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+            borderRadius: "10px",
+            width: "50%",
+          }}
+        >
+          <h2>Add System Manager</h2>
+          <form>
+            <TextField
+              name="firstName"
+              label="First Name"
+              value={newUser.firstName}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="lastName"
+              label="Last Name"
+              value={newUser.lastName}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="email"
+              label="Email"
+              value={newUser.email}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="mobile"
+              label="Mobile"
+              value={newUser.mobile}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="password"
+              label="Password"
+              type="password"
+              value={newUser.password}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <Box mt={2} display="flex" justifyContent="flex-end">
+              <Button
+                variant="contained"
+                onClick={handleSaveUser}
+                sx={{
+                  backgroundColor: "#0078A1",
+                  color: "white",
+                  textTransform: "none",
+                }}
+              >
+                Save
+              </Button>
+            </Box>
+          </form>
         </Box>
       </Modal>
     </>
   );
 };
+
+export default SystemManagers;
 
 const styles = {
   userContainer: {
@@ -387,19 +471,5 @@ const styles = {
   },
   userEmail: {
     color: "gray",
-    fontSize: 12,
-  },
-  modal: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   },
 };
-
-export default SystemManagers;

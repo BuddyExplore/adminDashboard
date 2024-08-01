@@ -17,36 +17,37 @@ function createData(product, reviewer, email, review, rating, description, date,
 
 const rows = [
   createData(
-    "Landmark",
+    "",
     "Amanda Harvey",
     "amanda@gmail.com",
-    "I just love it!",
+    "Excellent User Interface",
     5,
-    " The location is very nice. We were really excited to see that place. It offers a fantastic view and a great experience.",
+    "The system interface is very user-friendly and intuitive. Navigating through the features is seamless and enjoyable.",
     "2024-07-17, 5:48",
-    "Replied"
+    ""
   ),
   createData(
-    "Booking",
+    "",
     "Anne Richard",
     "anne@gmail.com",
-    "Really nice",
+    "Great Customer Support",
     4,
-    "The driver is really nice and good. He was very punctual and made the trip comfortable for us.",
+    "The customer support team is very responsive and helpful. They resolved my issue quickly and professionally.",
     "2024-07-01, 3:17",
-    "Reply"
+    ""
   ),
   createData(
-    "Blogs",
+    "",
     "David Harrison",
     "david@gmail.com",
-    "Helpful",
+    "Informative Documentation",
     4,
-    "That blog gives us a lot of information about the place. It was very helpful in planning our visit.",
+    "The documentation provided is comprehensive and easy to understand. It greatly assisted me in using the system effectively.",
     "2020-06-25, 09:19",
-    "Replied"
+    ""
   ),
 ];
+
 
 const Feedbacks = () => {
   const [search, setSearch] = useState("");
@@ -129,9 +130,8 @@ const Feedbacks = () => {
                 <TableRow>
                   <TableCell sx={{ fontWeight: "bold" }}></TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Reviewer</TableCell>
-                  <TableCell sx={{ fontWeight: "bold", width: "30%" }}>Review</TableCell>
+                  <TableCell sx={{ fontWeight: "bold"}}>Review</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Date</TableCell>
-                  <TableCell sx={{ fontWeight: "bold" }}>Status</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

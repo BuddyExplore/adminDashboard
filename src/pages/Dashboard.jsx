@@ -464,7 +464,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div
+       {/* <div
           className="card mt-10 border-1 bg-white"
           style={{
             flex: 1,
@@ -491,7 +491,7 @@ const Dashboard = () => {
             </div>
             <div id="html-dist"></div>
           </div>
-        </div>
+        </div>*/}
       </div>
     </>
   );
