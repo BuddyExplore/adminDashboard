@@ -215,17 +215,8 @@ const Header = () => {
           <MenuItem onClick={handleClose}>
             <Avatar /> Profile
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Avatar /> My account
-          </MenuItem>
-          <Divider />
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <PersonAdd fontSize="small" />
-            </ListItemIcon>
-            Add another account
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
+          <Divider />   
+         <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <Settings fontSize="small" />
             </ListItemIcon>
